@@ -64,11 +64,17 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Here's a Snackbar", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+               /* Snackbar.make(view, "Here's a Snackbar", Snackbar.LENGTH_LONG)
+                        .setAction("Action", null).show();*/
+               openDialog();
             }
         });
 
+    }
+
+    public void openDialog(){
+        DialogItem dialogItem = new DialogItem();
+        dialogItem.show(getSupportFragmentManager(),"examlpe dialog");
     }
 
     @Override
