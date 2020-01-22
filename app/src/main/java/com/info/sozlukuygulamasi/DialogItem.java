@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.net.sip.SipSession;
 import android.os.Bundle;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatDialogFragment;
 import android.view.LayoutInflater;
@@ -27,14 +28,20 @@ public class DialogItem extends AppCompatDialogFragment {
         // Pass null as the parent view because its going in the dialog layout
         builder.setView(view)
                 // Set title
-                .setTitle("Item Dialog Screen")
+                .setTitle("Add to the list")
                 // Add action buttons
                 .setPositiveButton("ekle", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int id) {
                       String en = etEn.getText().toString();
                       String tr = etTr.getText().toString();
-                      listener.applyTexts(en,tr);
+                      listener.addItem(en,tr);
+                    }
+                })
+                .setNeutralButton("güncelle", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+
                     }
                 })
                 .setNegativeButton("iptal", new DialogInterface.OnClickListener() {
@@ -64,6 +71,8 @@ public class DialogItem extends AppCompatDialogFragment {
     }
 
     public interface DialogItemListener{
-        void applyTexts(String en,String tr);
+        void addItem(String en,String tr);
+
     }
+
 }

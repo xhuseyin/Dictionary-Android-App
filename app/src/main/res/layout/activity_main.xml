@@ -33,7 +33,7 @@
         android:layout_marginRight="32dp"
         android:layout_marginBottom="32dp"
         android:contentDescription="test fab"
-       android:backgroundTint="#db4437"
+       android:backgroundTint="@color/colorPrimary"
         android:src="@drawable/ic_playlist_add_black_24dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />

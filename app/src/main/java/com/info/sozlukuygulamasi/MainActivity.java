@@ -20,11 +20,13 @@ import java.util.ArrayList;
 
 
 public class MainActivity extends AppCompatActivity implements SearchView.OnQueryTextListener, DialogItem.DialogItemListener {
+
     private Toolbar toolbar;
     private RecyclerView rv;
     private ArrayList<Kelimeler> kelimelerListe;
     private KelimelerAdapter adapter;
     private Veritabani vt ;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -59,8 +61,6 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
 
         rv.setAdapter(adapter);
 
-
-
         FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -73,11 +73,14 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
 
     }
 
+    // open dialog
     public void openDialog(){
         DialogItem dialogItem = new DialogItem();
-        dialogItem.show(getSupportFragmentManager(),"examlpe dialog");
+        dialogItem.show(getSupportFragmentManager(),"example dialog");
     }
+    //...
 
+    // options menu
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
 
@@ -103,6 +106,17 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
         return false;
     }
 
+    public void aramaYap(String aramaKelime){
+
+        kelimelerListe = new KelimelerDao().kelimeAra(vt,aramaKelime);
+
+        adapter = new KelimelerAdapter(this,kelimelerListe);
+
+        rv.setAdapter(adapter);
+    }
+    //...
+
+    //copy db
     public void veritabaniKopyala(){
         DatabaseCopyHelper copyHelper = new DatabaseCopyHelper(this);
 
@@ -114,20 +128,13 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
 
         copyHelper.openDataBase();
     }
+    //...
 
-    public void aramaYap(String aramaKelime){
-
-        kelimelerListe = new KelimelerDao().kelimeAra(vt,aramaKelime);
-
-        adapter = new KelimelerAdapter(this,kelimelerListe);
-
-        rv.setAdapter(adapter);
-    }
-
-
+    // add item to list
     @Override
-    public void applyTexts(String en, String tr) {
+    public void addItem(String en, String tr) {
         KelimelerDao dao = new KelimelerDao();
         dao.kelimeEkle(vt,en,tr);
     }
+    //...
 }
