@@ -1,27 +1,19 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="wrap_content"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:padding="16dp">
 
     <EditText
-        android:id="@+id/username"
-        android:inputType="textEmailAddress"
+        android:id="@+id/etEn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:layout_marginLeft="4dp"
-        android:layout_marginRight="4dp"
-        android:layout_marginBottom="4dp"
-        android:hint="ingilizce" />
+        android:hint="ingilizce"
+        />
     <EditText
-        android:id="@+id/password"
-        android:inputType="textPassword"
+        android:id="@+id/etTr"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
-        android:layout_marginLeft="4dp"
-        android:layout_marginRight="4dp"
-        android:layout_marginBottom="16dp"
-        android:fontFamily="sans-serif"
-        android:hint="turkce"/>
+        android:hint="türkce"
+        />
 </LinearLayout>

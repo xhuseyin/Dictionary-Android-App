@@ -13,12 +13,13 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.TextView;
 
 import java.io.IOException;
 import java.util.ArrayList;
 
 
-public class MainActivity extends AppCompatActivity implements SearchView.OnQueryTextListener {
+public class MainActivity extends AppCompatActivity implements SearchView.OnQueryTextListener, DialogItem.DialogItemListener {
     private Toolbar toolbar;
     private RecyclerView rv;
     private ArrayList<Kelimeler> kelimelerListe;
@@ -124,4 +125,9 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
     }
 
 
+    @Override
+    public void applyTexts(String en, String tr) {
+        KelimelerDao dao = new KelimelerDao();
+        dao.kelimeEkle(vt,en,tr);
+    }
 }
